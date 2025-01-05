@@ -1,208 +1,257 @@
 ---
 title: Get-Started
 layout: default
+nav_order: 2
 ---
 
-# Get-Started
+# File Manager
+{: .no_toc }
 
-All notable user-facing changes to this project are documented in this file.
+File Manager is used to perform operations with ADLS.
+{: .fs-6 .fw-300 }
 
-{: .highlight }
-The project underwent a major maintenance shift in March 2022.
+## Table of contents
+{: .no_toc .text-delta }
 
-## HEAD
+1. TOC
+{:toc}
 
-{: .note }
-This website is built from the `HEAD` of the `main` branch of the theme repository.
+---
 
-Code changes to `main` that are *not* in the latest release:
+View this site's [\_config.yml](https://github.com/just-the-docs/just-the-docs/tree/main/_config.yml) file as an example.
 
-- N/A
+## Site logo
 
-Docs changes made since the latest release:
-
-- N/A
-
-## Release v0.10.0
-
-Hi folks! This minor release adds one of our most-requested features: unlimited multi-level navigation (also known as recursive navigation). Huge thanks to [@pdmosses] for his wonderful work in implementing this feature!
-
-This release should be a straightforward upgrade for all users of Just the Docs. Thank you for your continued support!
-
-### Using Release `v0.10.0`
-
-Users who have not pinned the theme version will be **automatically upgraded to `v0.9.0` the next time they build their site**.
-
-To use this release explicitly as a remote theme:
-
-```yml
-remote_theme: just-the-docs/just-the-docs@v0.10.0
+```yaml
+# Set a path/url to a logo that will be displayed instead of the title
+logo: "/assets/images/just-the-docs.png"
 ```
 
-To use this version explicitly as a gem-based theme, pin the version in your `Gemfile` and re-run `bundle install` or `bundle update just-the-docs`:
+## Site favicon
 
-```ruby
-gem "just-the-docs", "0.10.0"
+```yaml
+# Set a path/url to a favicon that will be displayed by the browser
+favicon_ico: "/assets/images/favicon.ico"
 ```
 
-To use and pin a previous version of the theme, replace the `0.10.0` with the desired release tag.
+If the path to your favicon is `/favicon.ico`, you can leave `favicon_ico` unset.
 
-### New Features
+## Search
 
-- Added: Allow unlimited multi-level navigation by [@pdmosses] in [#1431]
+```yaml
+# Enable or disable the site search
+# Supports true (default) or false
+search_enabled: true
 
-### Documentation
-
-- Added: Allow unlimited multi-level navigation by [@pdmosses] in [#1440]
-- Added: sitemap (via `jekyll-sitemap` plugin) by [@mattxwang] in [#1530]
-- Fixed: (non-systemic) accessibility issues flagged by aXe by [@mattxwang] in [#1531]
-
-[#1431]: https://github.com/just-the-docs/just-the-docs/pull/1431
-[#1440]: https://github.com/just-the-docs/just-the-docs/pull/1440
-[#1530]: https://github.com/just-the-docs/just-the-docs/pull/1530
-[#1530]: https://github.com/just-the-docs/just-the-docs/pull/1531
-
-## Release v0.9.0
-
-Hi folks! This minor release adds a `nav_enabled` set of variables to enable/disable the navigation at a site, layout, and page level --- and uses that to add search and auxilary links to the `minimal` layout. In addition, it fixes `search-data.json` corruption with default layouts and some minor CSS/SCSS issues.
-
-This release should be a straightforward upgrade for all users of Just the Docs. Thank you for your continued support!
-
-### Using Release `v0.9.0`
-
-Users who have not pinned the theme version will be **automatically upgraded to `v0.9.0` the next time they build their site**.
-
-To use this release explicitly as a remote theme:
-
-```yml
-remote_theme: just-the-docs/just-the-docs@v0.9.0
+search:
+  # Split pages into sections that can be searched individually
+  # Supports 1 - 6, default: 2
+  heading_level: 2
+  # Maximum amount of previews per search result
+  # Default: 3
+  previews: 3
+  # Maximum amount of words to display before a matched word in the preview
+  # Default: 5
+  preview_words_before: 5
+  # Maximum amount of words to display after a matched word in the preview
+  # Default: 10
+  preview_words_after: 10
+  # Set the search token separator
+  # Default: /[\s\-/]+/
+  # Example: enable support for hyphenated search words
+  tokenizer_separator: /[\s/]+/
+  # Display the relative url in search results
+  # Supports true (default) or false
+  rel_url: true
+  # Enable or disable the search button that appears in the bottom right corner of every page
+  # Supports true or false (default)
+  button: false
+  # Focus the search input by pressing `ctrl + focus_shortcut_key` (or `cmd + focus_shortcut_key` on macOS)
+  focus_shortcut_key: 'k'
 ```
 
-To use this version explicitly as a gem-based theme, pin the version in your `Gemfile` and re-run `bundle install` or `bundle update just-the-docs`:
+## Mermaid Diagrams
+{: .d-inline-block }
 
-```ruby
-gem "just-the-docs", "0.9.0"
+New (v0.4.0)
+{: .label .label-green }
+
+The minimum configuration requires the key for `version` ([from jsDelivr](https://cdn.jsdelivr.net/npm/mermaid/)) in `_config.yml`:
+
+```yaml
+mermaid:
+  # Version of mermaid library
+  # Pick an available version from https://cdn.jsdelivr.net/npm/mermaid/
+  version: "9.1.3"
 ```
 
-To use and pin a previous version of the theme, replace the `0.9.0` with the desired release tag.
+Provide a `path` instead of a `version` key to load the mermaid library from a local file.
 
-### New Features
 
-- Added: `nav_enabled` site, layout, and page-level variable to selectively show or hide the side/mobile menu by [@kevinlin1] in [#1441]
-- Added: site-wide search bar and auxiliary links to the `minimal` layout by [@kevinlin1] in [#1441]
 
-### Bugfixes
+## Navigation sidebar
 
-- Fixed: protect `search-data.json` file from front matter default for layout by [@mattxwang] in [#1468]
-- Fixed: Sass mixed declarations by [@bobvandevijver] in [#1495]
-- Fixed: redundant `monospace` in `pre`, `code`, `kbd`, `samp` reset by [@mattxwang] in [#1508]
-
-### Documentation
-
-- Docs: Explained the `nav_enabled` variables as an alternative to using the minimal layout [@kevinlin1] in [#1441].
-
-### New Contributors
-
-- [@bobvandevijver] made their first contribution in [#1495]
-
-[@bobvandevijver]: https://github.com/bobvandevijver
-
-[#1441]: https://github.com/just-the-docs/just-the-docs/pull/1441
-[#1468]: https://github.com/just-the-docs/just-the-docs/pull/1468
-[#1495]: https://github.com/just-the-docs/just-the-docs/pull/1495
-[#1508]: https://github.com/just-the-docs/just-the-docs/pull/1508
-
-## Release v0.8.2
-
-Hi everyone! This patch release fixes a bug where a default layout with unrestricted `scope` (`path: ""`) breaks JavaScript functionality. Users who do not use a default layout with unrestricted `scope` should not be affected. This should be a straightforward upgrade for all users. Thank you to [@pdmosses] for triaging and fixing the bug!
-
-### Bugfixes
-
-- Fixed: Protect theme JS file from front matter default for layout by [@pdmosses] in [#1447]
-
-[#1447]: https://github.com/just-the-docs/just-the-docs/pull/1447
-
-## Release v0.8.1
-
-Hi folks! This patch release fixes a bug introduced in `0.8.0` that affects users who build their sites in strict mode. It is a straightforward upgrade that should require no manual migration changes. Thank you to [@Zarthus] for quickly catching and fixing this bug!
-
-### Bugfixes
-
-- Fixed: Liquid filter typo in breadcrumb component (`strip` instead of `trim`) by [@Zarthus] in [#1434]
-
-### Documentation
-
-- Build docs site using strict mode and `strict_filters` by [@Zarthus] in [#1435]
-
-### New Contributors
-
-- [@Zarthus] made their first contribution in [#1434]
-
-[@Zarthus]: https://github.com/Zarthus
-
-[#1434]: https://github.com/just-the-docs/just-the-docs/pull/1434
-[#1435]: https://github.com/just-the-docs/just-the-docs/pull/1435
-
-## Release v0.8.0
-
-Hi folks! This first minor release of 2024 has a short number of changes: a large improvement of build times for large sites, a new keyboard shortcut to focus the search bar, and sidebar navigation bugfixes for "pretty" URLs (with `.html` omitted) and the clickable area on Safari. This release has no explicit breaking changes and should be a straightforward upgrade for most (if not all) users.
-
-### Using Release `v0.8.0`
-
-Users who have not pinned the theme version will be **automatically upgraded to `v0.8.0` the next time they build their site**.
-
-To use this release explicitly as a remote theme:
-
-```yml
-remote_theme: just-the-docs/just-the-docs@v0.8.0
+```yaml
+# Enable or disable the side/mobile menu globally
+# Nav menu can also be selectively enabled or disabled using page variables or the minimal layout
+nav_enabled: true
 ```
 
-To use this version explicitly as a gem-based theme, pin the version in your `Gemfile` and re-run `bundle install` or `bundle update just-the-docs`:
+## Heading anchor links
 
-```ruby
-gem "just-the-docs", "0.8.0"
+```yaml
+# Heading anchor links appear on hover over h1-h6 tags in page content
+# allowing users to deep link to a particular heading on a page.
+#
+# Supports true (default) or false
+heading_anchors: true
 ```
 
-To use and pin a previous version of the theme, replace the `0.8.0` with the desired release tag.
+## Footer content
 
-### New Features
+```yaml
+# Footer content
+# appears at the bottom of every page's main content
+# Note: The footer_content option is deprecated and will be removed in a future major release. Please use `_includes/footer_custom.html` for more robust
+markup / liquid-based content.
+footer_content: "Copyright &copy; 2017-2020 Patrick Marsceill. Distributed by an <a href=\"https://github.com/just-the-docs/just-the-docs/tree/main/LICENSE.txt\">MIT license.</a>"
 
-- Added: configurable keyboard shortcut to focus search input by [@kcromanpl-bajra] in [#1411]
+# Footer last edited timestamp
+last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter
+last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https://ruby-doc.org/stdlib-2.7.0/libdoc/time/rdoc/Time.html
 
-### Bugfixes
+# Footer "Edit this page on GitHub" link text
+gh_edit_link: true # show or hide edit this page link
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/just-the-docs/just-the-docs" # the github URL for your repo
+gh_edit_branch: "main" # the branch that your docs is served from
+# gh_edit_source: docs # the source that your files originate from
+gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
+```
 
-- Fixed: quicker build by [@pdmosses] in [#1397]
-- Fixed: incorrect navigation when `.html` omitted from URL by [@pdmosses] in [#1374]
-- Fixed: incorrect positioning of clickable area for navigation links on Safari by [@mattxwang] in [#1403]
+_note: `footer_content` is deprecated, but still supported. For a better experience we have moved this into an include called `_includes/footer_custom.html` which will allow for robust markup / liquid-based content._
 
-### Documentation
+- the "page last modified" data will only display if a page has a key called `last_modified_date`, formatted in some readable date format
+- `last_edit_time_format` uses Ruby's DateTime formatter; for examples and information, please refer to the [official Ruby docs on `strftime` formatting](https://docs.ruby-lang.org/en/master/strftime_formatting_rdoc.html)
+- `gh_edit_repository` is the URL of the project's GitHub repository
+- `gh_edit_branch` is the branch that the docs site is served from; defaults to `main`
+- `gh_edit_source` is the source directory that your project files are stored in (should be the same as [site.source](https://jekyllrb.com/docs/configuration/options/))
+- `gh_edit_view_mode` is `"tree"` by default, which brings the user to the github page; switch to `"edit"` to bring the user directly into editing mode
 
-- Add documentation to "Navigation Structure" on grouping pages with collections by [@mitchnemirov] in [#1390]
+## Color scheme
 
-### New Contributors
+```yaml
+# Color scheme supports "light" (default) and "dark"
+color_scheme: dark
+```
 
-- [@mitchnemirov] made their first contribution in [#1390]
-- [@kcromanpl-bajra] made their first contribution in [#1411]
+<button class="btn js-toggle-dark-mode">Preview dark color scheme</button>
 
-[@mitchnemirov]: https://github.com/mitchnemirov
-[@kcromanpl-bajra]: https://github.com/kcromanpl-bajra
+<script>
+const toggleDarkMode = document.querySelector('.js-toggle-dark-mode');
 
-[#1374]: https://github.com/just-the-docs/just-the-docs/pull/1374
-[#1390]: https://github.com/just-the-docs/just-the-docs/pull/1390
-[#1397]: https://github.com/just-the-docs/just-the-docs/pull/1397
-[#1403]: https://github.com/just-the-docs/just-the-docs/pull/1403
-[#1411]: https://github.com/just-the-docs/just-the-docs/pull/1411
+jtd.addEvent(toggleDarkMode, 'click', function(){
+  if (jtd.getTheme() === 'dark') {
+    jtd.setTheme('light');
+    toggleDarkMode.textContent = 'Preview dark color scheme';
+  } else {
+    jtd.setTheme('dark');
+    toggleDarkMode.textContent = 'Return to the light side';
+  }
+});
+</script>
 
-## Release v0.7.0
+ts. The earlier you migrate, the more historical data and insights you will have in Google Analytics 4.
 
-Hi folks! This is a minor release that adds a new configuration option for opening external links in a new tab and provides many bugfixes (in both correctness and performance) for Just the Docs users with large sites. We anticipate that for most users, this is a straightforward upgrade. However, it introduces some potentially-breaking *internal* changes to undocumented features of the theme.
+Universal Analytics (UA) and Google Analytics 4 (GA4) properties are supported.
 
-### Migrating to `v0.7.0`
+```yaml
+# Google Analytics Tracking (optional)
+# Supports a CSV of tracking ID strings (eg. "UA-1234567-89,G-1AB234CDE5")
+ga_tracking: UA-2709176-10
+ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
+```
 
-**Migration**: users will need to migrate if:
+### Multiple IDs
+{: .d-inline-block .no_toc }
 
-- they overrode `_includes/nav.html`, which has moved to `_includes/components/nav.html`
-- they have an element with the IDs `jtd-nav-activation` or `jtd-head-nav-stylesheet`
+New (v0.4.0)
+{: .label .label-green }
 
-For more, refer to the [migration guide](https://just-the-docs.com/MIGRATION/).
+This theme supports multiple comma-separated tracking IDs. This helps seamlessly transition UA properties to GA4 properties by tracking both for a while.
 
+```yaml
+ga_tracking: "UA-1234567-89,G-1AB234CDE5"
+```
+
+## Document collections
+
+By default, the navigation and search include normal [pages](https://jekyllrb.com/docs/pages/).
+You can also use [Jekyll collections](https://jekyllrb.com/docs/collections/) which group documents semantically together.
+
+{: .warning }
+> Collection folders always start with an underscore (`_`), e.g. `_tests`. You won't see your collections if you omit the prefix.
+
+For example, put all your test files in the `_tests` folder and create the `tests` collection:
+
+```yaml
+# Define Jekyll collections
+collections:
+  # Define a collection named "tests", its documents reside in the "_tests" directory
+  tests:
+    permalink: "/:collection/:path/"
+    output: true
+
+just_the_docs:
+  # Define which collections are used in just-the-docs
+  collections:
+    # Reference the "tests" collection
+    tests:
+      # Give the collection a name
+      name: Tests
+      # Exclude the collection from the navigation
+      # Supports true or false (default)
+      # nav_exclude: true
+      # Fold the collection in the navigation
+      # Supports true or false (default)
+      # nav_fold: true  # note: this option is new in v0.4
+      # Exclude the collection from the search
+      # Supports true or false (default)
+      # search_exclude: true
+```
+
+The navigation for all your normal pages (if any) is displayed before those in collections.
+
+<span>New (v0.4.0)</span>{: .label .label-green }
+Including `nav_fold: true` in a collection configuration *folds* that collection:
+an expander symbol appears next to the collection name,
+and clicking it displays/hides the links to the top-level pages of the collection.[^js-disabled]
+
+[^js-disabled]: <span>New (v0.6.0)</span>{: .label .label-green }
+    When JavaScript is disabled in the browser, all folded collections are automatically expanded,
+    since clicking expander symbols has no effect.
+    (In previous releases, navigation into folded collections required JavaScript to be enabled.)
+
+You can reference multiple collections.
+This creates categories in the navigation with the configured names.
+
+```yaml
+collections:
+  tests:
+    permalink: "/:collection/:path/"
+    output: true
+  tutorials:
+    permalink: "/:collection/:path/"
+    output: true
+
+just_the_docs:
+  collections:
+    tests:
+      name: Tests
+    tutorials:
+      name: Tutorials
+```
+
+When *all* your pages are in a single collection, its name is not displayed.
+
+The navigation for each collection is a separate name space for page titles: a page in one collection cannot be a child of a page in a different collection, or of a normal page.
